@@ -27,6 +27,17 @@ public class ReporteService {
     @Value("${cliente.service.url}")
     private String clienteServiceUrl;
 
+    /**
+     * Genera un reporte de movimientos de un cliente en un rango de fechas.
+     *
+     * @param clienteId El id del cliente.
+     * @param fechaInicio El inicio del rango de fechas.
+     * @param fechaFin El fin del rango de fechas.
+     *
+     * @return Un listado de objetos {@link ReporteRS} con los movimientos.
+     *
+     * @throws RuntimeException si el cliente no existe, no tiene cuentas o no se encontraron movimientos en el rango de fechas.
+     */
     public List<ReporteRS> generarReporte(String clienteId, LocalDate fechaInicio, LocalDate fechaFin) {
 
         // 1. Obtener cliente desde otro microservicio

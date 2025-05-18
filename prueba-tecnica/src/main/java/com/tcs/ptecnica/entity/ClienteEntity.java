@@ -1,6 +1,7 @@
 package com.tcs.ptecnica.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.util.List;
@@ -11,8 +12,10 @@ import java.util.List;
 public class ClienteEntity extends PersonaEntity{
     @Column(name = "id_cliente",unique = true, nullable = false)
     private String clienteId;
-    @Column(name = "contrasena")
+    @NotBlank(message = "La contraseña es obligatoria")
+    @Column(name = "contrasena", nullable = false)
     private String contrasena;
-    @Column(name = "estado")
+    @NotBlank(message = "El estado es obligatorio")
+    @Column(name = "estado", nullable = false)
     private String estado;
 }

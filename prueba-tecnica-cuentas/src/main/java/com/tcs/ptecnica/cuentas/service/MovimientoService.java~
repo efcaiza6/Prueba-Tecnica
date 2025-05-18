@@ -110,9 +110,6 @@ public class MovimientoService {
                 .orElseThrow(() -> new RuntimeException("Movimiento no encontrado: " + id));
     }
 
-    /**
-     * Elimina un movimiento si existe, de lo contrario lanza excepción.
-     */
     public void delete(Integer id) {
         if (!movimientoRepository.existsById(id)) {
             throw new RuntimeException("Movimiento no encontrado: " + id);

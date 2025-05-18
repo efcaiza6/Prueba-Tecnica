@@ -13,18 +13,33 @@ import java.util.Optional;
 public class CuentaService {
     private final CuentaRepository cuentaRepository;
 
+    /**
+     * Guarda una nueva cuenta en la base de datos.
+     */
     public CuentaEntity save(CuentaEntity cuenta) {
         return cuentaRepository.save(cuenta);
     }
 
+    /**
+     * Retorna la lista de todas las cuentas.
+     */
     public List<CuentaEntity> findAll() {
         return cuentaRepository.findAll();
     }
 
+    /**
+     * Busca una cuenta por su ID.
+     * @param numeroCuenta ID numérico de la cuenta
+     * @return Optional con la cuenta encontrada o vacío
+     */
     public Optional<CuentaEntity> findById(Integer numeroCuenta) {
         return cuentaRepository.findById(numeroCuenta);
     }
 
+    /**
+     * Actualiza los datos de una cuenta existente.
+     * Lanza excepción si la cuenta no existe.
+     */
     public CuentaEntity update(Integer numeroCuenta, CuentaEntity updatedCuenta) {
         return cuentaRepository.findById(numeroCuenta)
                 .map(cuenta -> {
@@ -37,6 +52,9 @@ public class CuentaService {
                 .orElseThrow(() -> new RuntimeException("Cuenta no encontrada: " + numeroCuenta));
     }
 
+    /**
+     * Elimina una cuenta si existe; lanza excepción si no.
+     */
     public void delete(Integer numeroCuenta) {
         if (!cuentaRepository.existsById(numeroCuenta)) {
             throw new RuntimeException("Cuenta no encontrada: " + numeroCuenta);

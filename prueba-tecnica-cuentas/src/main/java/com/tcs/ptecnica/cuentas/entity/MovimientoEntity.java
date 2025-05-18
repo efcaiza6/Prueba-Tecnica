@@ -21,7 +21,7 @@ public class MovimientoEntity {
     private Double valor;
     @Column(name = "saldo")
     private Double saldo;
-
+    // Relación obligatoria con la cuenta, no se permite movimiento sin cuenta asociada
     @ManyToOne
     @JoinColumn(name = "cuenta_id")
     private CuentaEntity cuenta;
